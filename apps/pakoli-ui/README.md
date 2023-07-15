@@ -28,3 +28,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_source=github.com&utm_medium=referral&utm_campaign=turborepo-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Debugging
+
+This app uses the `--inspect` flag to enable debugging with Chrome Dev tools
+
+To learn more about debugging vist [NextJS Debugging](https://nextjs.org/docs/pages/building-your-application/configuring/debugging#server-side-code)

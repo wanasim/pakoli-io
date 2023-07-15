@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Header } from 'pakolicons';
+import Header from '@/components/Header';
 import PakoliLogoHat from '../public/pk_logo_hat.svg';
 import PakoliLogoText from '../public/pk_logo_text.svg';
 import './globals.css';

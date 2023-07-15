@@ -18,6 +18,6 @@
     "jsx": "preserve",
     "noImplicitAny": false
   },
-  "include": ["app", "src", "next-env.d.ts"],
+  "include": [".", "app", "src", "next-env.d.ts"],
   "exclude": ["node_modules"]
 }

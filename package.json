@@ -9,7 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "devv": "npm run dev --workspaces=pakoli-ui",
+    "dev:ui": "npm run dev --workspaces=pakoli-ui",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

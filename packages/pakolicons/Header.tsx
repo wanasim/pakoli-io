@@ -1,97 +1,14 @@
-'use client';
-import { Fragment } from 'react';
-import { Popover, Transition } from '@headlessui/react';
 import {
-  Bars3Icon,
-  BookmarkSquareIcon,
-  BriefcaseIcon,
   MagnifyingGlassIcon,
-  BuildingOfficeIcon,
-  ChartBarIcon,
-  CheckCircleIcon,
-  ComputerDesktopIcon,
-  CursorArrowRaysIcon,
-  GlobeAltIcon,
-  InformationCircleIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  PlayIcon,
-  ShieldCheckIcon,
-  Squares2X2Icon,
-  UserGroupIcon,
   UserIcon,
-  XMarkIcon,
   ShoppingBagIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import Image, { StaticImageData } from 'next/image';
 import Nav from './Nav';
+import CADCurrency from './public/flag-canada.svg';
 
-const solutions = [
-  {
-    name: 'Analytics',
-    description:
-      'Get a better understanding of where your traffic is coming from.',
-    href: '#',
-    icon: ChartBarIcon,
-  },
-  {
-    name: 'Engagement',
-    description: 'Speak directly to your customers in a more meaningful way.',
-    href: '#',
-    icon: CursorArrowRaysIcon,
-  },
-  {
-    name: 'Security',
-    description: 'Your customers’ data will be safe and secure.',
-    href: '#',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Integrations',
-    description: "Connect with third-party tools that you're already using.",
-    href: '#',
-    icon: Squares2X2Icon,
-  },
-];
-const callsToAction = [
-  { name: 'Watch Demo', href: '#', icon: PlayIcon },
-  { name: 'View All Products', href: '#', icon: CheckCircleIcon },
-  { name: 'Contact Sales', href: '#', icon: PhoneIcon },
-];
-const company = [
-  { name: 'About', href: '#', icon: InformationCircleIcon },
-  { name: 'Customers', href: '#', icon: BuildingOfficeIcon },
-  { name: 'Press', href: '#', icon: NewspaperIcon },
-  { name: 'Careers', href: '#', icon: BriefcaseIcon },
-  { name: 'Privacy', href: '#', icon: ShieldCheckIcon },
-];
-const resources = [
-  { name: 'Community', href: '#', icon: UserGroupIcon },
-  { name: 'Partners', href: '#', icon: GlobeAltIcon },
-  { name: 'Guides', href: '#', icon: BookmarkSquareIcon },
-  { name: 'Webinars', href: '#', icon: ComputerDesktopIcon },
-];
-const blogPosts = [
-  {
-    id: 1,
-    name: 'Boost your conversion rate',
-    href: '#',
-    preview:
-      'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80',
-  },
-  {
-    id: 2,
-    name: 'How to use search engine optimization to drive traffic to your site',
-    href: '#',
-    preview:
-      'Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80',
-  },
-];
+const navItems = ['Shop', 'Community', 'About'];
 
 export function Header({
   logoImage,
@@ -118,15 +35,7 @@ export function Header({
         </a>
         {/* </div> */}
 
-        <Nav
-          items={[
-            'Shop',
-            'Sustainability',
-            'Community',
-            'Resources',
-            'Explore',
-          ]}
-        />
+        <Nav items={...navItems} />
 
         <div className="flex lg:justify-end">
           <div className="hidden lg:flex lg:flex-1 lg:items-center lg:space-x-6">
@@ -160,7 +69,8 @@ export function Header({
               className="flex items-center text-gray-700 hover:text-gray-800"
             >
               {/** american flag? */}
-              <span className="ml-3 block  font-medium">ENG</span>
+              <Image src={CADCurrency} height={20} width={20} alt=""></Image>
+              <span className="ml-2 block  font-medium">CAD</span>
               <span className="sr-only">, change currency</span>
             </a>
             {/* <a

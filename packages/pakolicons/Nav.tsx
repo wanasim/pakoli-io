@@ -1,5 +1,3 @@
-'use client';
-
 import { Popover, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import {
@@ -148,7 +146,7 @@ const navigation = {
 
 export default function Nav(props: NavItems) {
   return (
-    <nav className="hidden pt-3 md:flex md:flex-1 md:items-center md:justify-center">
+    <nav className="hidden pl-8 pt-3 md:flex md:flex-1 md:items-center">
       {/** Each Popover(aka menu item) is a client component since it's not designer to be a server component
        * Hence, why we're wrapping with a nav instead of leverage Popover's prop "as" set to "nav"
        */}

@@ -6,7 +6,6 @@ export default async function RootPage() {
     <div>
       This is RootPaged
       <Suspense fallback={<>Loading....</>}>
-        {/* @ts-expect-error Server Component */}
         <Card />
       </Suspense>
     </div>

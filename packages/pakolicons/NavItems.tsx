@@ -1,3 +1,4 @@
+'use client';
 import { Popover, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import {
@@ -5,156 +6,20 @@ import {
   UserIcon,
   ShoppingBagIcon,
 } from '@heroicons/react/24/outline';
+import Link from 'next/link';
+import { NavItemsProps } from '@models';
 
-type NavItems = {
-  items: string[];
-};
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
-const navigation = {
-  categories: [
-    {
-      id: 'women',
-      name: 'Women',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt:
-            'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
-          imageAlt:
-            'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Dresses', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Denim', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'men',
-      name: 'Men',
-      featured: [
-        {
-          name: 'New Arrivals',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt:
-            'Drawstring top with elastic loop closure and textured interior padding.',
-        },
-        {
-          name: 'Artwork Tees',
-          href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg',
-          imageAlt:
-            'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Clothing',
-          items: [
-            { name: 'Tops', href: '#' },
-            { name: 'Pants', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' },
-          ],
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-          ],
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
-};
-
-export default function Nav(props: NavItems) {
+export default function NavItems({ items: { categories } }: NavItemsProps) {
   return (
     <nav className="hidden pl-8 pt-3 md:flex md:flex-1 md:items-center">
       {/** Each Popover(aka menu item) is a client component since it's not designer to be a server component
        * Hence, why we're wrapping with a nav instead of leverage Popover's prop "as" set to "nav"
        */}
       <div className="flex">
-        {props.items.map((item, key) => (
-          <Popover key={item}>
+        {categories.map((item, key) => (
+          <Popover key={key}>
             <Popover.Button className="focus:ring-offset-2' group mx-5 mb-3 inline-flex items-center rounded-md text-base font-medium text-gray-700 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-teal-600">
-              {item}
+              {item.name}
             </Popover.Button>
 
             <Transition
@@ -180,7 +45,7 @@ export default function Nav(props: NavItems) {
                   <div className="mx-auto max-w-7xl px-8">
                     <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-12">
                       <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                        {navigation.categories[key]?.featured.map((item) => (
+                        {categories[key]?.featured.map((item) => (
                           <div
                             key={item.name}
                             className="group relative text-base sm:text-sm"
@@ -209,7 +74,7 @@ export default function Nav(props: NavItems) {
                         ))}
                       </div>
                       <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                        {navigation.categories[key]?.sections.map((section) => (
+                        {categories[key]?.sections.map((section) => (
                           <div key={section.name}>
                             <p
                               id={`${section.name}-heading`}

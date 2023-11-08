@@ -26,6 +26,6 @@
     "tailwind-config": "*",
     "tailwindcss": "^3.2.7",
     "tsconfig": "*",
-    "typescript": "^4.5.3"
+    "typescript": "^5.2.2"
   }
 }

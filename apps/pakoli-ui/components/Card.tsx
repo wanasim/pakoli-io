@@ -1,5 +1,6 @@
 async function getProducts() {
   const res = await fetch('http://localhost:3001/products');
+  console.log('RESSSFSDFDS@#$%', res.status);
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data');

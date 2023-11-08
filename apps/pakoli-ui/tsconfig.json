@@ -5,17 +5,19 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "../../packages/pakolicons/NavLogo.tsx"
   ],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": { "@/components/*": ["components/*"] }
+    "paths": {
+      "@/components/*": ["./components/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   }
-  // "compilerOptions": {
-  //   "baseUrl": ".",
-  //   "paths": {
-  //     "@components/*": ["components/*"]
-  //   }
-  // },
 }

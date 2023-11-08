@@ -1,42 +1,32 @@
+import { ReactElement } from 'react';
+import Image, { StaticImageData } from 'next/image';
+import NavLogo from './NavLogo';
+import NavItems from './NavItems';
+import NavActions from './NavActions';
 import {
   MagnifyingGlassIcon,
   UserIcon,
   ShoppingBagIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import Image, { StaticImageData } from 'next/image';
-import Nav from './Nav';
 import CADCurrency from './public/flag-canada.svg';
+import { Navigation } from '@models';
 
-const navItems = ['Shop', 'Community', 'About'];
+// const navItems = ['Shop', 'Community', 'About'];
 
-export function Header({
-  logoImage,
-  logoText,
-}: {
-  logoImage: StaticImageData;
-  logoText: StaticImageData;
-}) {
+type NavChildren = typeof NavLogo | typeof NavItems | typeof NavActions;
+type NavBarProps = {
+  children: Array<ReactElement<NavChildren>> | ReactElement<NavChildren>;
+};
+
+export default function NavBar({ children }: NavBarProps) {
   return (
     <header className="relative border-b border-gray-200">
-      <p className="flex h-10 items-center justify-center bg-teal-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-        Get free delivery on orders over $100
-      </p>
+      {/* Logo */}
       <div className="flex items-center justify-between border-l px-8 py-5 sm:h-16">
-        {/* <div className="flex items-center"> */}
-        <a href="#" className="flex h-10 w-36 shrink-0 items-center">
-          <span className="sr-only">Pakoli Logo</span>
-          <div className="relative h-full w-1/2">
-            <Image fill={true} alt="Pakoli Logo" src={logoImage}></Image>
-          </div>
-          <div className="relative ml-2 h-full w-full">
-            <Image fill={true} alt="Pakoli Logo Text" src={logoText}></Image>
-          </div>
-        </a>
-        {/* </div> */}
+        {children}
 
-        <Nav items={...navItems} />
-
+        {/* Header Actions */}
         <div className="flex lg:justify-end">
           <div className="hidden lg:flex lg:flex-1 lg:items-center lg:space-x-6">
             <div className="flex w-full grow justify-end">
@@ -73,16 +63,7 @@ export function Header({
               <span className="ml-2 block  font-medium">CAD</span>
               <span className="sr-only">, change currency</span>
             </a>
-            {/* <a
-              href="#"
-              className="mx-5 font-medium text-gray-700 hover:text-gray-800"
-            >
-              <span className="sr-only">Account</span>
-              <UserIcon
-                className="h-6 w-6 text-gray-700 hover:text-gray-800"
-                aria-hidden="true"
-              />
-            </a> */}
+
             <a href="#" className="mx-5 p-2 text-gray-400 hover:text-gray-500">
               <span className="sr-only">Account</span>
               <UserIcon className="h-6 w-6" aria-hidden="true" />

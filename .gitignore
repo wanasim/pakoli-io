@@ -3,6 +3,7 @@
 # dependencies
 node_modules
 node_modules_test
+node_modules_test_api
 package-lock-test.json
 .pnp
 .pnp.js
